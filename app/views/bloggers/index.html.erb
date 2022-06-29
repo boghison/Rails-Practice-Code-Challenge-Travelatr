@@ -1,0 +1,8 @@
+<h1>Bloggers</h1>
+<ul>
+    <%@bloggers.each do |bl|%>
+        <li><%=link_to bl.name, blogger_path(bl)%></li>
+    <%end%>
+</ul>
+
+<%=link_to "Create new blogger", new_blogger_path%>

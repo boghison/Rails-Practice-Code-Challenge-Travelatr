@@ -1,0 +1,27 @@
+<%= form_tag '/bloggers' do %>
+
+<% if @blogger.errors.any? %>
+    <h2>There were some errors:</h2>
+    <ul id="error_explanation">
+      <% @blogger.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %> 
+
+  <div class="field<%= ' field_with_errors' if @blogger.errors[:name].any? %>">
+    <%= label_tag "name", "Name" %>
+    <%= text_field_tag "name", @blogger.name %>
+  </div>
+
+    <div class="field<%= ' field_with_errors' if @blogger.errors[:bio].any? %>">
+    <%= label_tag "bio", "Bio" %>
+    <%= text_field_tag "bio", @blogger.bio %>
+  </div>
+
+    <div class="field<%= ' field_with_errors' if @blogger.errors[:age].any? %>">
+    <%= label_tag "age", "Age" %>
+    <%= number_field_tag "age", @blogger.age, min: 1 %>
+  </div>
+  <%= submit_tag "Create" %>
+<% end %> 
